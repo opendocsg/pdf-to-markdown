@@ -14,7 +14,8 @@
     "lint": "eslint lib --cache",
     "test": "mocha test --recursive",
     "test:watch": "mocha test --recursive --watch",
-    "check": "npm run lint && npm run test"
+    "test:coverage": "nyc npm run test",
+    "check": "npm run lint && npm run test:coverage"
   },
   "keywords": [
     "PDF",
@@ -51,6 +52,7 @@
     "flow-bin": "^0.102.0",
     "mocha": "^8.2.1",
     "mock-fs": "^4.10.1",
+    "nyc": "^15.1.0",
     "rewire": "^5.0.0"
   }
 }

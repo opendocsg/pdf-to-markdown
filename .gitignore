@@ -4,3 +4,4 @@ npm-debug.log
 .eslintcache
 dist/
 output/
+.nyc_output/

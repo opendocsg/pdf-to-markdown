@@ -1,6 +1,6 @@
 const { expect } = require('chai')
 
-const { hasUpperCaseCharacterInMiddleOfWord, normalizedCharCodeArray, removeLeadingWhitespaces, removeTrailingWhitespaces, prefixAfterWhitespace, suffixBeforeWhitespace, charCodeArray, isListItem, isNumberedListItem, wordMatch } = require('../../lib/util/string-functions')
+const { hasUpperCaseCharacterInMiddleOfWord, normalizedCharCodeArray, removeLeadingWhitespaces, removeTrailingWhitespaces, prefixAfterWhitespace, suffixBeforeWhitespace, charCodeArray, isListItem, isNumberedListItem, wordMatch, hasOnly, isListItemCharacter } = require('../../lib/util/string-functions')
 
 describe('functions: hasUpperCaseCharacterInMiddleOfWord', () => {
   it('single word', () => {
@@ -176,5 +176,36 @@ describe('functions: wordsMatch', () => {
     expect(wordMatch('text', 'test')).to.equal(0.0)
 
     expect(wordMatch('inStruCtionS for the full Moon proCeSS', 'Instructions for the Full Moon Process')).to.equal(1.0)
+  })
+})
+
+describe('functions: hasOnly', () => {
+  it('Match', () => {
+    expect(hasOnly('a', 'a')).to.equal(true)
+    expect(hasOnly('aaaa', 'a')).to.equal(true)
+  })
+
+  it('No Match', () => {
+    expect(hasOnly('abc', 'a')).to.equal(false)
+    expect(hasOnly('abc', '')).to.equal(false)
+    expect(hasOnly('abc', 'ab')).to.equal(false)
+    expect(hasOnly('abc', '1')).to.equal(false)
+  })
+})
+
+describe('functions: isListItemCharacter', () => {
+  it('Match', () => {
+    expect(isListItemCharacter('-')).to.equal(true)
+    expect(isListItemCharacter('•')).to.equal(true)
+    expect(isListItemCharacter('–')).to.equal(true)
+  })
+
+  it('No Match', () => {
+    expect(isListItemCharacter('--')).to.equal(false)
+    expect(isListItemCharacter('••')).to.equal(false)
+    expect(isListItemCharacter('––')).to.equal(false)
+    expect(isListItemCharacter('')).to.equal(false)
+    expect(isListItemCharacter('a')).to.equal(false)
+    expect(isListItemCharacter('abc')).to.equal(false)
   })
 })

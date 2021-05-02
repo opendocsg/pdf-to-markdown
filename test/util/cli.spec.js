@@ -22,6 +22,8 @@ describe('functions: entry point file retrieval', function () {
     const [fileNames, folderNames] = getFileAndFolderPaths('root')
     expect(fileNames).to.have.members(['root/pdf-file-1.pdf', 'root/pdf-file-2.pdf'])
     expect(folderNames).to.have.members(['root/dir-1', 'root/dir-2', 'root/dir-3'])
+
+    mock.restore()
   })
 
   it('Assert getAllPaths from a single directory returns the proper arrays, recursive', function () {
@@ -51,6 +53,8 @@ describe('functions: entry point file retrieval', function () {
     expect(allFolderNames).to.have.members(['root/dir-1',
       'root/dir-2',
       'root/dir-3'])
+
+    mock.restore()
   })
 
   it('Assert getAllPaths from a single directory returns the proper arrays, non-recursive', function () {
@@ -74,5 +78,7 @@ describe('functions: entry point file retrieval', function () {
 
     expect(allFileNames).to.have.members(['root/pdf-file-1.pdf', 'root/pdf-file-2.pdf'])
     expect(allFolderNames).to.have.members(['root/dir-1', 'root/dir-2', 'root/dir-3'])
+
+    mock.restore()
   })
 })
